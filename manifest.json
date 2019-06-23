@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Fuck t.co",
+    "version": "0.1",
+    "description": "Circumvents click-through trackers on Twitter and Facebook.",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://twitter.com/*",
+                "*://*.facebook.com/*"
+            ],
+            "js": [
+                "twitter.js",
+                "facebook.js"
+            ]
+        }
+    ]
+}
