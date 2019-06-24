@@ -13,7 +13,7 @@ URLs are still in the DOM in the link's `title` attribute.
 
 ![An external link on Twitter with its destination URL visible in the hover title](/readme/twitter1.png)
 
-And also in the `data-expanded-url` attribute.
+In the current Twitter web UI, it is also in the `data-expanded-url` attribute.
 
 ![The DOM representation of the same Twitter link, with the destionation URL in the title and data-expanded-url attributes](/readme/twitter2.png)
 
@@ -21,6 +21,10 @@ This lets us replace the link's `href` attribute on click, before the browser na
 
 Unfortunately, when a URL has a Twitter Card representation, there is no destination
 URL in the DOM at all, so we can't circumvent t.co here.
+
+On the mobile site, the page loads asynchronously in a React application, so the
+event listeners are set on `document.body` rather than the feed column (which
+doesn't exist a page load).
 
 # Facebook
 
