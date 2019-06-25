@@ -1,18 +1,26 @@
 {
     "manifest_version": 2,
     "name": "Fuck t.co",
-    "version": "0.1",
+    "version": "0.2.3",
+    "author": "Jess Bees",
+    "homepage_url": "https://www.toomanybees.com/fuck-t-co",
     "description": "Circumvents click-through trackers on Twitter and Facebook.",
     "content_scripts": [
         {
             "matches": [
-                "*://*.twitter.com/*",
-                "*://*.facebook.com/*"
+                "*://*.twitter.com/*"
+                // "*://*.facebook.com/*"
             ],
             "js": [
-                "twitter.js",
-                "facebook.js"
+                "twitter.js"
+                // "facebook.js"
             ]
         }
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{fb0ca974-8147-4ee6-b795-04b61437004d}",
+            "update_url": "https://www.toomanybees.com/fuck-t-co/updates.json"
+        }
+    }
 }
