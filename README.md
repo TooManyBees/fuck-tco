@@ -9,7 +9,7 @@ I didn't test the extension at all on Chrome because I don't use Chrome.
 # Twitter
 
 Links on Twitter's web interface point to a shortened t.co URL, but their original
-URLs are still in the DOM in the link's `title` attribute.
+URLs are still present in the DOM, even though they appear truncated with an ellipsis.
 
 ![An external link on Twitter with its destination URL visible in the hover title](/readme/twitter1.png)
 

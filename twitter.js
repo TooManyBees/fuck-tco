@@ -18,14 +18,15 @@ function mobileListener(event) {
     if (maybeLink && maybeLink.nodeName === "A") {
 
         // This branch catches website links in a Twitter profile card.
+        // Unlike links in tweets, it doesn't have a hidden url scheme
+        // that `textContent` will include.
         if (maybeLink.parentElement.getAttribute("data-testid") === "UserProfileHeader_Items") {
             maybeLink.setAttribute("href", `http://${maybeLink.textContent.trim()}`);
             return;
         }
 
-        // If the title is URL-like, then it's the address we want to rewrite.
         try {
-            var url = new URL(maybeLink.getAttribute("title"));
+            var url = new URL(maybeLink.textContent.trim());
             if (url) {
                 maybeLink.setAttribute("href", url.toString());
             }
