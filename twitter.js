@@ -26,7 +26,9 @@ function mobileListener(event) {
         }
 
         try {
-            var url = new URL(maybeLink.textContent.trim());
+            var text = maybeLink.textContent.trim();
+            text = text.replace(/…$/, '');
+            var url = new URL(text);
             if (url) {
                 maybeLink.setAttribute("href", url.toString());
             }
