@@ -4,10 +4,6 @@ function classicListener(event) {
         : event.target.parentElement;
     if (maybeLink && maybeLink.classList.contains("twitter-timeline-link")) {
         maybeLink.setAttribute("href", maybeLink.dataset.expandedUrl);
-    } else if (maybeLink.relList && maybeLink.relList.contains("me")) {
-        // This branch catches website links in a Twitter profile card.
-        maybeLink.setAttribute("href", `https://${maybeLink.textContent.trim()}`);
-        return;
     }
 }
 
@@ -18,10 +14,12 @@ function mobileListener(event) {
     if (maybeLink && maybeLink.nodeName === "A") {
 
         // This branch catches website links in a Twitter profile card.
-        // Unlike links in tweets, it doesn't have a hidden url scheme
-        // that `textContent` will include.
+        // Unlike links in tweets, if it gets shortened with a "…" we
+        // will not be able to recover the full URL at all. Furthermore,
+        // the protocol is not present, so we would have to use "http"
+        // and hope that the server upgrades to https on request.
+        // For these reasons, we no longer care about profile card links.
         if (maybeLink.parentElement.getAttribute("data-testid") === "UserProfileHeader_Items") {
-            maybeLink.setAttribute("href", `http://${maybeLink.textContent.trim()}`);
             return;
         }
 
